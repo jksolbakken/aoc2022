@@ -4,8 +4,9 @@ import java.lang.RuntimeException
 import java.util.SortedMap
 
 fun main() {
-    println(elvesSortedByCalories().keys.first())
-    println(elvesSortedByCalories().keys.take(3).sum())
+    val elvesSortedByCalories = elvesSortedByCalories()
+    println("Part 1: ${elvesSortedByCalories.keys.first()}")
+    println("Part 2: ${elvesSortedByCalories.keys.take(3).sum()}")
 }
 
 
