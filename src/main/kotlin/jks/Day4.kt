@@ -8,12 +8,18 @@ fun main() {
         ?: throw RuntimeException("oh noes!")
     val lines = File(uri).readLines()
     println("Part 1: ${part1(lines)}")
+    println("Part 2: ${part2(lines)}")
 }
 
 private fun part1(lines: List<String>) =
     lines.map(::pairs)
         .map(::ranges)
         .count { oneFullyContainsOther(it[0], it[1]) }
+
+private fun part2(lines: List<String>) =
+    lines.map(::pairs)
+        .map(::ranges)
+        .count { onePartlyContainsOther(it[0], it[1]) }
 
 private fun pairs(line: String) = line.split(",")
 
@@ -24,5 +30,8 @@ private fun ranges(pair: List<String>) = pair.map { elves ->
 
 private fun oneFullyContainsOther(a: IntRange, b: IntRange) =
     a.fullyContains(b) || b.fullyContains(a)
+
+private fun onePartlyContainsOther(a: IntRange, b: IntRange) =
+    a.intersect(b).isNotEmpty()
 
 private fun IntRange.fullyContains(other: IntRange) = this.all { other.contains(it) }
