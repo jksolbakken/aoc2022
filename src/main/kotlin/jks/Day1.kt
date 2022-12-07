@@ -10,7 +10,7 @@ fun main() {
 }
 
 
-fun elvesSortedByCalories(): SortedMap<Int, List<List<Int>>> {
+private fun elvesSortedByCalories(): SortedMap<Int, List<List<Int>>> {
     val input = object {}::class.java.getResource("/day1_input")?.readText()
         ?: throw RuntimeException("oh noes!")
     val elves = input.split("\\n\\n".toRegex())

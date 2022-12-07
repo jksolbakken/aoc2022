@@ -41,7 +41,7 @@ enum class Result(val points: Int) {
     LOSER(0)
 }
 
-fun result(round: Round): Result = when (round) {
+private fun result(round: Round): Result = when (round) {
     Round(ROCK, ROCK) -> DRAW
     Round(ROCK, PAPER) -> WINNER
     Round(ROCK, SCISSORS) -> LOSER
@@ -54,21 +54,21 @@ fun result(round: Round): Result = when (round) {
     else -> throw RuntimeException("$round is not valid")
 }
 
-fun toItem(c: Char) = when (c) {
+private fun toItem(c: Char) = when (c) {
     'A', 'X' -> ROCK
     'B', 'Y' -> PAPER
     'C', 'Z' -> SCISSORS
     else -> throw RuntimeException("oh noes!")
 }
 
-fun toResult(c: Char) = when (c) {
+private fun toResult(c: Char) = when (c) {
     'X' -> LOSER
     'Y' -> DRAW
     'Z' -> WINNER
     else -> throw RuntimeException("oh noes!")
 }
 
-fun itemForDesiredResult(othersItem: Item, desiredResult: Result) = when {
+private fun itemForDesiredResult(othersItem: Item, desiredResult: Result) = when {
     desiredResult == DRAW -> othersItem
     othersItem == ROCK && desiredResult == WINNER -> PAPER
     othersItem == ROCK && desiredResult == LOSER -> SCISSORS
